@@ -1,5 +1,4 @@
 package edu.pingpong.arnoldenum.kata;
-import edu.pingpong.arnoldenum.kata.Planeta;
 
 
 public class ArnoldMain {

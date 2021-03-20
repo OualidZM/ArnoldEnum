@@ -1,6 +1,8 @@
 package edu.pingpong.arnoldenum.kata;
 
-    public enum Planeta {
+import java.util.EnumSet;
+
+public enum Planeta {
         MERCURY (3.303e+23, 2.4397e6),
         VENUS (4.869e+24, 6.0518e6),
         EARTH (5.976e+24, 6.37814e6),
@@ -18,5 +20,33 @@ package edu.pingpong.arnoldenum.kata;
         
             this.masa = masa;
             this.radio = radio;
+        }
+        public double pesoSuperficie(double pesoHumano) {
+
+            return nuestraMasa(pesoHumano) * gravedadEnSuperficie();
+        }
+    
+        public  double gravedadEnSuperficie(){
+            return this.G * this.masa / Math.pow(this.radio, 2);
+        }
+    
+        public double nuestraMasa(double pesoHumano){
+            return pesoHumano / (this.G * Planeta.EARTH.masa / Math.pow(Planeta.EARTH.radio, 2));
+        }
+    
+        public double getMasa() {
+            return this.masa;
+        }
+    
+        public double getRadio() {
+            return this.radio;
+        }
+    
+        public static EnumSet<Planeta> getPlanetasTerrestres() {
+            return EnumSet.range(MERCURY, MARS);
+        }
+    
+        public static EnumSet<Planeta> getGigantesGaseosos() {
+            return EnumSet.range(JUPITER, NEPTUNE);
         }
     }
